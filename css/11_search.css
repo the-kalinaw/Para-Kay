@@ -1,0 +1,90 @@
+/* css/11_search_page.css */
+
+body.header-is-shrunk.search-results-page #search-page-content {
+    /* This margin-top will ensure the content is pushed down enough to not be obscured by the shrunken header */
+    margin-top: 2000px; /* Adjust this value if the header height changes */
+}
+
+#search-page-content {
+    margin-top: 50px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 40px; 
+}
+
+/* Main H1 title for search results (below header) */
+.page-title {
+    font-size: 2.2rem; 
+    text-align: center;
+    margin-top: 40px; /* More space from header */
+    margin-bottom: 20px; /* Space before the on-page search bar */
+    color: var(--text-color);
+    font-weight: 600; /* Make it a bit bolder */
+    letter-spacing: 0.5px;
+}
+
+/* Search input area on the search results page */
+.search-input-area-on-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px; /* More space before gallery */
+    gap: 10px;
+    max-width: 700px; 
+    margin-left: auto;
+    margin-right: auto;
+    padding: 15px; /* Add some padding around it */
+    background-color: var(--card-background); /* Give it a card-like background */
+    border-radius: 8px;
+    box-shadow: 0 2px 10px var(--card-shadow);
+}
+
+.search-input-area-on-page input[type="text"] {
+    padding: 12px 18px; 
+    border: 1px solid var(--input-border-color);
+    border-radius: 25px; /* Pill shape for input */
+    width: 100%;
+    flex-grow: 1; 
+    font-family: var(--font-primary);
+    font-size: 1rem;
+    color: var(--text-color);
+    background-color: var(--bg-color); /* Slightly different from card for contrast */
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.search-input-area-on-page input[type="text"]:focus {
+    outline: none;
+    border-color: var(--link-hover-color); /* Use link hover for focus */
+    box-shadow: 0 0 0 3px rgba(var(--link-hover-color-rgb, 85,85,85), 0.25); /* Create rgb version of link-hover-color for focus ring */
+}
+
+[data-theme="light"] .search-input-area-on-page input[type="text"]::placeholder { 
+    color: #777; /* Lighter placeholder for light theme */
+}
+[data-theme="dark"] .search-input-area-on-page input[type="text"] {
+    background-color: #2f2f2f; /* Darker input bg in dark mode */
+}
+[data-theme="dark"] .search-input-area-on-page input[type="text"]::placeholder{
+    color: #bbb;
+}
+
+
+.search-input-area-on-page button {
+    padding: 12px 22px;
+    border-radius: 25px;
+    background-color: var(--text-color);
+    color: var(--bg-color);
+    font-weight: 600;
+    flex-shrink: 0; 
+    transition: background-color 0.2s ease, color 0.2s ease, opacity 0.2s ease;
+}
+.search-input-area-on-page button:hover {
+    opacity: 0.85;
+}
+
+/* No results message */
+#no-results-message {
+    color: var(--text-color);
+    opacity: 0.8;
+    font-family: var(--font-accent);
+    font-size: 1.2rem;
+}

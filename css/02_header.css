@@ -1,0 +1,81 @@
+/* ==========================================================================
+   Header & Landing Section
+   ========================================================================== */
+
+/* Common styles for the main <header> element */
+#main-header {
+    width: 100%;
+    position: relative; 
+    z-index: 100; 
+    display: flex; /* Make header a flex container to manage its direct children */
+    align-items: center;
+    transition: height 0.5s cubic-bezier(0.77, 0, 0.175, 1), /* Smoother cubic-bezier */
+                padding 0.5s cubic-bezier(0.77, 0, 0.175, 1), 
+                background-color 0.3s ease, 
+                box-shadow 0.3s ease;
+}
+
+/* Styles for the FULLSCREEN LANDING state */
+#main-header.landing-fullscreen {
+    height: 100vh; 
+    flex-direction: column; /* Stack title and (hidden) nav vertically */
+    justify-content: center; /* Center them vertically */
+    text-align: center;
+    overflow: hidden;
+    padding: 20px; 
+    background-color: var(--bg-color);
+}
+
+/* Site Title Container - Common Styles */
+.site-title-container {
+    transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
+}
+
+/* Site Title Container - LANDING State */
+#main-header.landing-fullscreen .site-title-container {
+    text-align: center;
+    transform: translateY(0) scale(1);
+    opacity: 1;
+}
+#main-header.landing-fullscreen .site-title-container h1 {
+    font-size: 5rem; 
+    margin-bottom: 0.2em;
+    transition: font-size 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+}
+#main-header.landing-fullscreen .site-title-container .subtitle {
+    font-size: 2rem; 
+    opacity: 0.9;
+    display: block; /* Ensure it's visible */
+    transition: font-size 0.4s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.3s ease;
+}
+
+/* --- SHRUNKEN / FIXED HEADER Styles --- */
+#main-header.shrunk {
+    height: 70px; 
+    background-color: var(--header-shrunk-bg-color);
+    box-shadow: 0 2px 10px var(--card-shadow);
+    position: fixed; 
+    top: 0; left: 0; 
+    padding: 0 20px; /* Horizontal padding for the header bar */
+    flex-direction: row; /* Align items horizontally */
+    justify-content: space-between; /* Title left, Nav right */
+}
+
+/* Site Title Container - SHRUNK State */
+#main-header.shrunk .site-title-container {
+    text-align: left;
+    transform: translateY(0) scale(1); /* Ensure it's reset */
+    opacity: 1;
+    margin-right: 20px; /* Space between title and nav */
+    flex-shrink: 0;
+}
+#main-header.shrunk .site-title-container h1 {
+    font-size: 1.8rem; /* Smaller title */
+    margin-bottom: 0; 
+    margin-left: 1rem;
+    color: var(--header-shrunk-text-color);
+}
+#main-header.shrunk .site-title-container .subtitle {
+    display: none; /* Hide subtitle in shrunken header */
+    opacity: 0;
+}

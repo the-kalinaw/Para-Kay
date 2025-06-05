@@ -1,0 +1,206 @@
+/* Hamburger Menu Button - Fixed to viewport */
+.menu-button {
+    background: none; border: none; color: var(--text-color);
+    font-size: 1.8rem; cursor: pointer; padding: 15px; 
+    z-index: 1010; position: fixed; top: 5px; right: 15px;      
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+.menu-button:hover {
+    color: var(--link-hover-color); transform: scale(1.1);
+}
+
+body.offcanvas-menu-is-open .menu-button {
+    opacity: 0;
+    visibility: hidden; /* Or pointer-events: none; if you prefer it to be visually present but not clickable */
+    /* pointer-events: none; */
+}
+
+/* Category Navigation */
+.categories-navigation {
+    display: flex; 
+    align-items: center;
+    justify-content: space-between;
+    margin-right: auto;
+    padding-right: 100px; 
+    /* For Landing State - initially hidden and out of the way */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px); /* Start slightly down */
+    transition: opacity 0.3s ease-in-out 0.1s, /* Delay fade-in slightly */
+                visibility 0s linear 0.4s,  /* Hide after opacity transition */
+                transform 0.3s ease-in-out 0.1s;
+}
+
+#main-header.shrunk .categories-navigation { 
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    transition-delay: 0.1s, 0s, 0.1s; /* Adjust delays for appearing */
+    margin-left: auto; /* Push the nav to the right of the title */
+}
+
+.categories-navigation ul.nav-links-list {
+    list-style: none; 
+    display: flex; 
+    align-items: center; 
+    gap: 20px; 
+    margin: 0; 
+    padding: 0; 
+}
+
+/* Styles for list items <a> */
+.categories-navigation ul.nav-links-list li a {
+    color: var(--header-shrunk-text-color);
+    font-family: var(--font-headings);
+    font-size: 1rem; 
+    padding: 8px 5px; 
+    position: relative; 
+    display: inline-block; 
+    transition: transform 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), color 0.2s ease;
+}
+.categories-navigation ul.nav-links-list li a:hover {
+    color: var(--link-hover-color); 
+    transform: scale(1.08); 
+    text-decoration: none; 
+}
+.categories-navigation ul.nav-links-list li a::after {
+    content: ''; position: absolute; width: 0; height: 2px;
+    bottom: -2px; left: 50%; 
+    background-color: var(--link-hover-color); 
+    transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
+}
+.categories-navigation ul.nav-links-list li a:hover::after {
+    width: 100%; left: 0; 
+}
+
+/* Search Area as the last LI in the UL */
+.categories-navigation ul li.search-item-in-nav {
+    /* No specific margin needed, gap from UL handles it */
+    display: flex; 
+    align-items: center;
+}
+
+.categories-navigation .search-area {
+    display: flex; 
+    align-items: center; 
+    position: relative; 
+}
+.categories-navigation .search-button {
+    background: none; border: none; color: var(--header-shrunk-text-color);
+    font-size: 1.1rem; cursor: pointer; padding: 8px; 
+    transition: color 0.2s ease;
+    margin-left: 1rem;
+}
+.categories-navigation .search-button:hover { color: var(--link-hover-color); }
+
+/* Search bar container positioning and transition */
+.search-bar-container { 
+    display: flex; align-items: center; padding: 5px;
+    background-color: var(--search-bar-bg); 
+    border-radius: 25px; 
+    box-shadow: 0 2px 8px var(--card-shadow);
+    position: absolute; 
+    top: calc(100% + 8px); /* Below the search icon */
+    right: 0; 
+    opacity: 0; visibility: hidden; 
+    transform: translateY(-10px) scale(0.95); 
+    transition: opacity 0.3s ease, visibility 0s 0.3s linear, transform 0.3s ease;
+    z-index: 10;
+}
+.search-bar-container.active { 
+    opacity: 1; visibility: visible; transform: translateY(0) scale(1);
+    transition: opacity 0.3s ease, visibility 0s 0s linear, transform 0.3s ease;
+}
+
+.search-bar-container input[type="text"] {
+    border: none; background: transparent; padding: 8px 15px; border-radius: 20px; 
+    font-family: var(--font-primary); color: var(--text-color); 
+    outline: none; width: 200px; 
+}
+[data-theme="dark"] .search-bar-container input[type="text"]::placeholder { color: #aaa; }
+
+.search-bar-container button#search-submit-button {
+    padding: 8px 12px; background-color: var(--text-color); 
+    color: var(--bg-color); 
+    border: none; border-radius: 20px; cursor: pointer;
+    font-family: var(--font-headings); font-size: 0.9rem; margin-left: 5px; 
+    transition: opacity 0.2s ease;
+}
+.search-bar-container button#search-submit-button:hover { opacity: 0.85; }
+
+/* ==========================================================================
+   Off-Canvas Menu
+   ========================================================================== */
+.offcanvas-menu-container {
+    display: flex; /* ADDED: Use flexbox for the container itself */
+    flex-direction: column; /* ADDED: Stack children (close button area, ul) vertically */
+    position: fixed; top: 0; right: -100%; /* Starts off-screen */
+    width: 15%; max-width: 80vw; height: 100vh;
+    background-color: var(--menu-bg-color); 
+    color: var(--menu-text-color);       
+    box-shadow: -5px 0 15px rgba(0,0,0,0.2);
+    padding: 70px 20px 20px; 
+    z-index: 1020; 
+    overflow-y: auto;
+    opacity: 0; visibility: hidden;
+    transition-property: right, opacity, visibility;
+    transition-duration: 0.4s, 0.3s, 0s; /* Slightly longer for right, opacity same, visibility immediate after opacity */
+    transition-timing-function: ease-in-out, ease-in-out, linear; /* Smoother general closing */
+    transition-delay: 0s, 0s, 0.3s; /* Delay visibility change until opacity transition is done */
+
+}
+[data-theme="dark"] .offcanvas-menu-container {
+    box-shadow: -5px 0 15px rgba(255,255,255,0.05);
+}
+.offcanvas-menu-container.open { /* Added by JS to show */
+    right: 0; opacity: 1; visibility: visible;;
+    transition-property: right, opacity, visibility;
+    transition-duration: 0.4s, 0.25s, 0s; /* Right uses the cubic-bezier, opacity faster */
+    transition-timing-function: cubic-bezier(0.25, 0.8, 0.25, 1), ease-out, linear; /* Snappy for 'right', quick fade-in for opacity */
+    transition-delay: 0s; /* No delay when opening */
+}
+
+.offcanvas-menu-container ul { 
+    list-style: none; 
+    padding-top: 10px; 
+    margin: 0; /* Reset default ul margin */
+    display: flex; /* ADDED: Make the <ul> a flex container */
+    flex-direction: column; /* ADDED: Stack <li> items vertically */
+    flex-grow: 1; /* ADDED: Allow the <ul> to take up remaining vertical space */
+}
+
+.offcanvas-menu-container ul li a,
+.offcanvas-menu-container .theme-button-in-menu {
+    display: block; padding: 13px 18px;
+    color: var(--menu-text-color); 
+    text-decoration: none; font-size: 1.1rem;
+    font-family: var(--font-headings); 
+    transition: background-color 0.2s ease, color 0.2s ease;
+    border-radius: 5px; margin-bottom: 10px; text-align: left; 
+}
+
+.offcanvas-menu-container ul li.theme-toggle-menu-item {
+    margin-top: auto; /* ADDED: Pushes this item to the bottom of the flex container (the <ul>) */
+    margin-bottom: 0; /* Remove bottom margin if it was from the general li rule */
+}
+
+.offcanvas-menu-container .theme-button-in-menu {
+    width: 100%; background: none; border: none; cursor: pointer;
+    display: flex; justify-content: space-between; align-items: center;
+}
+.offcanvas-menu-container .theme-button-in-menu .theme-button-text { margin-right: 10px; }
+.offcanvas-menu-container .theme-button-in-menu i { font-size: 1em; }
+
+.offcanvas-menu-container ul li a:hover,
+.offcanvas-menu-container .theme-button-in-menu:hover {
+    background-color: var(--menu-item-hover-bg); 
+}
+
+.close-menu-button { /* For off-canvas menu */
+    position: absolute; top: 20px; right: 25px; 
+    background: none; border: none;
+    color: var(--menu-text-color); 
+    font-size: 2.2rem; line-height: 1; cursor: pointer;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+.close-menu-button:hover { transform: scale(1.1); }

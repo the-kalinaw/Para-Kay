@@ -1,0 +1,81 @@
+/* ==========================================================================
+   Main Page Content Sections (#page-content on index.html)
+   ========================================================================== */
+#page-content {
+    flex-grow: 1; 
+    padding-top: 0; /* No top padding when header is fullscreen */
+    transition: padding-top 0.5s ease-in-out; /* For header shrink */
+}
+
+/* Padding for main content when header is shrunk */
+body.header-is-shrunk #page-content {
+    margin-top: 210px;
+    padding-top: 70px;
+}
+
+body.header-is-shrunk #all-poems-content {
+    margin-top: 250px;
+    padding-top: 70px; /* Adjusted for better spacing */
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.page-title {
+    font-size: 2.2rem; 
+    text-align: center;
+    margin-top: 40px; /* More space from header */
+    margin-bottom: 20px; /* Space before the on-page search bar */
+    color: var(--text-color);
+    font-weight: 600; /* Make it a bit bolder */
+    letter-spacing: 0.5px;
+}
+
+.poem-category-section {
+    padding: 50px 20px; /* Vertical and horizontal padding for sections */
+    max-width: 1200px; /* Max width for content within sections */
+    margin: 0 auto; /* Center sections */
+}
+
+.text-center-section { text-align: center; }
+
+/* --- Monthly Archive Controls --- */
+.monthly-archive-controls {
+    display: flex; justify-content: center; align-items: center;
+    gap: 15px; margin-bottom: 30px; flex-wrap: wrap; 
+}
+.monthly-archive-controls label {
+    font-family: var(--font-headings); font-size: 0.9rem;
+}
+.monthly-archive-controls select,
+.monthly-archive-controls button {
+    padding: 10px 15px; /* Slightly larger */
+    font-family: var(--font-primary);
+    border: 1px solid var(--input-border-color); /* Use theme variable */
+    border-radius: 5px;
+    background-color: var(--card-background);
+    color: var(--text-color);
+}
+.monthly-archive-controls button {
+    background-color: var(--text-color); color: var(--bg-color);
+    cursor: pointer; transition: opacity 0.2s ease;
+    font-weight: 600; /* Bolder button text */
+}
+.monthly-archive-controls button:hover { opacity: 0.8; }
+
+
+/* --- "View All Poems" Button/Link --- */
+.button-style-link {
+    display: inline-block; padding: 12px 25px;
+    background-color: var(--button-style-link-bg); 
+    color: var(--button-style-link-text);       
+    font-family: var(--font-headings); font-size: 1rem;
+    border-radius: 25px; 
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+.button-style-link:hover {
+    background-color: var(--button-style-link-hover-bg); 
+    text-decoration: none;
+    transform: translateY(-2px);
+}
+.button-style-link i { margin-left: 8px; }

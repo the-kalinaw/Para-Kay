@@ -1,0 +1,50 @@
+/* ==========================================================================
+   CSS Custom Properties (Variables)
+   ========================================================================== */
+:root {
+    /* Font families */
+    --font-primary: 'PT Serif', serif;
+    --font-headings: 'Roboto Condensed', sans-serif;
+    --font-accent: 'Patrick Hand', cursive;
+
+    /* Default to Light Theme Variables */
+    --bg-color: #f5f5f5;                        /* Main background */
+    --text-color: #060606;                      /* Main text color */
+    --header-shrunk-bg-color: #ededed;          /* Background of the shrunken header */
+    --header-shrunk-text-color: var(--text-color); /* Text color in shrunken header */
+    --link-color: var(--text-color);            /* Default link color */
+    --link-hover-color: #555555;                /* Link hover color */
+    --menu-bg-color: var(--text-color);         /* Off-canvas menu background (dark in light theme) */
+    --menu-text-color: var(--bg-color);         /* Off-canvas menu text (light in light theme) */
+    --menu-item-hover-bg: rgba(255, 255, 255, 0.1); /* Hover for items in dark menu */
+    --card-background: #ffffff;                 /* Background for gallery items, modal content */
+    --card-shadow: rgba(0, 0, 0, 0.08);         /* Subtle shadow for cards */
+    --button-style-link-bg: var(--text-color);  /* Background for "View All" button */
+    --button-style-link-text: var(--bg-color);  /* Text color for "View All" button */
+    --button-style-link-hover-bg: var(--link-hover-color); /* Hover for "View All" button */
+    --modal-overlay-bg: rgba(0,0,0,0.85);       /* Modal background overlay */
+    --footer-bg: #e0e0e0;                       /* Footer background */
+    --footer-text: #555;                        /* Footer text color */
+    --media-placeholder-bg: #e0e0e0;           /* Background for media containers before load */
+    --search-bar-bg: var(--bg-color);           /* Search bar background */
+    --input-border-color: #ccc;                 /* Border for inputs/selects */
+}
+
+[data-theme="dark"] {
+    --bg-color: #121212;    
+    --text-color: #e0e0e0;  
+    --header-shrunk-bg-color: #1f1f1f; 
+    --link-hover-color: #cccccc; 
+    --menu-bg-color: var(--text-color);         /* Off-canvas menu background (light in dark theme) */
+    --menu-text-color: var(--bg-color);         /* Off-canvas menu text (dark in dark theme) */
+    --menu-item-hover-bg: rgba(0, 0, 0, 0.2);   /* Hover for items in light menu */
+    --card-background: #252525;
+    --card-shadow: rgba(0, 0, 0, 0.25);
+    --button-style-link-hover-bg: var(--link-hover-color);
+    --modal-overlay-bg: rgba(0,0,0,0.92);       /* Even darker overlay for dark mode */
+    --footer-bg: #1a1a1a;
+    --footer-text: #888;
+    --media-placeholder-bg: #333;
+    --search-bar-bg: #2a2a2a;
+    --input-border-color: #555;
+}

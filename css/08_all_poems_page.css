@@ -1,0 +1,44 @@
+/* ==========================================================================
+   All-Poems Page Specific Styles (all-poems.html)
+   ========================================================================== */
+body.all-poems-page #page-content {
+    padding-top: 80px; /* Initial space for the title that scrolls */
+    padding-bottom: 80px; /* Space for the fixed back button at the bottom */
+}
+
+/* The header that contains the main H1 title for all-poems page */
+.all-poems-page .page-specific-title-header {
+    padding: 20px 0;
+    text-align: center;
+    margin-bottom: 30px; /* Space below title before grid starts */
+}
+.all-poems-page .page-title { 
+    font-size: 2.8rem; 
+    color: var(--text-color);
+}
+
+/* Hamburger menu button specifically for all-poems page if it needs different positioning
+   than the one on index.html (though currently it uses the same .menu-button class) */
+.top-right-menu-button { 
+    /* position: fixed; top: 20px; right: 30px; already defined in .menu-button */
+}
+
+/* Back to Home Button - Fixed Bottom Left */
+.back-home-button.bottom-left-fixed {
+    position: fixed; bottom: 25px; left: 25px;
+    background-color: var(--text-color); 
+    color: var(--bg-color);             
+    padding: 10px 18px; border-radius: 25px; 
+    font-family: var(--font-headings); font-size: 0.9rem;
+    box-shadow: 0 2px 8px var(--card-shadow); /* Use themed shadow */
+    z-index: 1000; 
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    display: flex; align-items: center;
+}
+.back-home-button.bottom-left-fixed i { margin-right: 8px; }
+.back-home-button.bottom-left-fixed:hover {
+    background-color: var(--link-hover-color); 
+    color: var(--bg-color); 
+    text-decoration: none;
+    transform: translateY(-2px) scale(1.03);
+}

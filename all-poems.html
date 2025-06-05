@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light"> <!-- Default theme set to light -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lahat ng Para Kay</title> 
+
+    <!-- Google Fonts (Same as index.html) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- Main Stylesheet (Shared with index.html) -->
+    <link rel="stylesheet" href="css/00_variables.css">
+    <link rel="stylesheet" href="css/01_base.css">
+    <link rel="stylesheet" href="css/02_header.css">
+    <link rel="stylesheet" href="css/03_navigation.css">
+    <link rel="stylesheet" href="css/04_main_content.css">
+    <link rel="stylesheet" href="css/05_gallery.css">
+    <link rel="stylesheet" href="css/06_modal.css">
+    <link rel="stylesheet" href="css/07_footer.css"> 
+    <link rel="stylesheet" href="css/08_all_poems_page.css"> 
+    <link rel="stylesheet" href="css/09_utilities.css">
+    <link rel="stylesheet" href="css/10_dark_mode_overrides.css">
+    <link rel="stylesheet" href="css/12_responsive.css">
+</head>
+<body class="all-poems-page"> <!-- Specific class for this page if needed -->
+
+    <!-- ====================================================================== -->
+    <!-- == HEADER / LANDING SECTION (Initial Fullscreen, then Shrunk Fixed) == -->
+    <!-- ====================================================================== -->
+    <header id="main-header" class="landing-fullscreen"> 
+        <!-- Hamburger Menu Button - Remains fixed -->
+        <button id="hamburger-menu-button" class="menu-button" aria-label="Open Menu">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <!-- Single Site Title Container - Its content and style change with header state -->
+        <div class="site-title-container">
+            <a href="index.html"><h1>Para Kay..</h1></a>
+            <p class="subtitle">AJ Arre || Tulaarawan</p>
+        </div>
+        
+        <!-- Category Navigation & Search - Its visibility and layout change with header state -->
+        <nav id="category-nav" class="categories-navigation"> <!-- Removed hidden-on-landing for now, CSS will control -->
+            <ul class="nav-links-list">
+                <li><a href="index.html#recent-section">Most Recent</a></li>
+                <li><a href="index.html#favorites-section">Favorites</a></li>
+                <li><a href="index.html#monthly-archive-section">Monthly Archives</a></li> 
+                <li><a href="index.html#all-poems-link-section">All Poems</a></li> 
+            </ul>
+            <div class="search-area">
+                <button id="search-icon-button" class="search-button" aria-label="Open Search">
+                    <i class="fas fa-search"></i>
+                </button>
+                <div id="search-bar-container" class="search-bar-container">
+                    <input type="text" id="search-input" placeholder="Search poems...">
+                    <button id="search-submit-button" aria-label="Submit search">Go</button>
+                </div>
+            </div>
+        </nav>
+        <!-- 
+            OFF-CANVAS MENU 
+            - Slides in from the right.
+            - Visibility controlled by JS (toggling the 'open' class).
+        -->
+        <div id="offcanvas-menu" class="offcanvas-menu-container"> <!-- 'open' class toggled by JS -->
+            <button id="close-offcanvas-menu-button" class="close-menu-button" aria-label="Close Menu">×</button>
+            <ul>
+                <li><a href="https://www.facebook.com/andreijefferson.arre" target="_blank">Facebook</a></li>
+                <li><a href="https://www.instagram.com/the_kalinaw/" target="_blank">Instagram</a></li>
+                <li><a href="mailto:andreijeffersonarre@gmail.com" target="_blank">Email</a></li>
+                <li><a href="YOUR_LINKEDIN_LINK_HERE" target="_blank">LinkedIn</a></li>
+                <li><a href="https://docs.google.com/document/d/1GE34GQqCklCJTGagv005QVi6jZuWk7W5MT-nReKd1EE/edit?usp=sharing" target="_blank">Portfolio</a></li>
+                <!-- Add more external links as needed -->
+                <li class="theme-toggle-menu-item">
+                    <button id="theme-toggle-button" class="theme-button-in-menu" aria-label="Toggle theme">
+                        <span class="theme-button-text">Toggle Theme</span> 
+                        <i class="fas fa-moon"></i> <!-- Icon changes with JS based on theme -->
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- ====================================================================== -->
+    <!-- ==================== MAIN CONTENT FOR ALL POEMS ==================== -->
+    <!-- ====================================================================== -->
+    <main id="all-poems-content">
+        <h1 class="page-title">Higit sa 100 Tula Para Kay..</h1>
+
+        <div id="all-poems-gallery-container" class="gallery-grid">
+            <!-- All poem items will be populated here by JavaScript for "endless" scroll -->
+        </div>
+        <div id="loading-indicator" style="text-align: center; padding: 20px; display: none;">
+            <!-- JS will show this when loading more items -->
+            Loading more poems... 
+        </div>
+    </main>
+
+    <!-- Back to Home Button - Fixed Bottom Left -->
+    <a href="index.html" class="back-home-button bottom-left-fixed" aria-label="Back to Home">
+        <i class="fas fa-arrow-left"></i> Home 
+    </a>
+
+    <!-- Modal for displaying individual poems (Same structure as index.html) -->
+    <div id="story-modal" class="modal"> <!-- 'active' class toggled by JS -->
+        <div class="modal-content-wrapper"> 
+            <div class="modal-content">
+                <span class="close-button" title="Close (Esc)" aria-label="Close modal">×</span>
+                <div class="modal-media-container"></div>
+                <div class="modal-details-content">
+                    <h3 id="modal-poem-title" class="poem-title-in-modal"></h3>
+                    <div id="modal-song-info">
+                        <p><strong id="modal-song-title-artist"></strong></p>
+                        <div id="modal-song-links"></div>
+                    </div>
+                    <p class="modal-date">Posted: <span id="modal-date-posted"></span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ====================================================================== -->
+    <!-- ========================== PAGE FOOTER =========================== -->
+    <!-- ====================================================================== -->
+    <footer>
+        <p>©<span id="current-year"></span>. AJ Arre. sa mundong puno ng galit at katapusan, mabuhay ka at magmahal.</p>
+    </footer>
+
+    <!-- JavaScript file for this specific page -->
+    <script type="module" src="js/main-all-poems.js"></script> 
+</body>
+</html>

@@ -1,0 +1,11 @@
+/* ==========================================================================
+   Footer (for index.html)
+   ========================================================================== */
+footer {
+    text-align: center; padding: 25px 1rem;
+    background: var(--footer-bg); 
+    color: var(--footer-text);    
+    margin-top: auto; /* Pushes to bottom */
+    font-size: 0.9rem; /* Base size for footer */
+    /* font-family: var(--font-accent); Is applied via p tag selector */
+}

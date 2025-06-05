@@ -1,0 +1,33 @@
+/* ==========================================================================
+   Dark Mode Overrides (Consolidated)
+   ========================================================================== */
+/* Variables for dark theme are already defined in [data-theme="dark"] at the top.
+   Most elements should adapt based on those variables.
+   Add specific overrides below if an element needs more than just color inversion.
+*/
+[data-theme="dark"] .gallery-item:hover {
+    box-shadow: 0 10px 25px rgba(0,0,0,0.45); /* Darker, more pronounced hover for dark cards */
+}
+[data-theme="dark"] .monthly-archive-controls select,
+[data-theme="dark"] .monthly-archive-controls button {
+    border-color: #444; /* Darker border for selects/buttons in dark mode */
+}
+[data-theme="dark"] .button-style-link {
+    box-shadow: 0 2px 5px rgba(255,255,255,0.05); /* Lighter shadow for dark mode */
+}
+[data-theme="dark"] .modal-content {
+    box-shadow: 0 10px 35px rgba(0,0,0,0.4); /* Stronger shadow for dark modal */
+}
+[data-theme="dark"] .back-home-button.bottom-left-fixed {
+    box-shadow: 0 2px 8px rgba(255,255,255,0.1); /* Lighter shadow */
+}
+
+/* Dark mode scrollbars (optional, browser support varies) */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: #e0e0e0; }
+::-webkit-scrollbar-thumb { background: #aaa; border-radius: 5px; }
+::-webkit-scrollbar-thumb:hover { background: #888; }
+
+[data-theme="dark"]::-webkit-scrollbar-track { background: #2c2c2c; }
+[data-theme="dark"]::-webkit-scrollbar-thumb { background: #555; }
+[data-theme="dark"]::-webkit-scrollbar-thumb:hover { background: #666; }

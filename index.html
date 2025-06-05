@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark"> <!-- Default theme set to light -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mga Tula Para Kay</title> 
+
+    <!-- Google Fonts: PT Serif, Roboto Condensed, Patrick Hand -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome for Icons (Hamburger, Search, Arrows) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> 
+    
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="css/00_variables.css">
+    <link rel="stylesheet" href="css/01_base.css">
+    <link rel="stylesheet" href="css/02_header.css">
+    <link rel="stylesheet" href="css/03_navigation.css">
+    <link rel="stylesheet" href="css/04_main_content.css">
+    <link rel="stylesheet" href="css/05_gallery.css">
+    <link rel="stylesheet" href="css/06_modal.css">
+    <link rel="stylesheet" href="css/07_footer.css">
+    <link rel="stylesheet" href="css/09_utilities.css">
+    <link rel="stylesheet" href="css/10_dark_mode_overrides.css">
+    <link rel="stylesheet" href="css/12_responsive.css">
+</head>
+<body>
+
+    <!-- ====================================================================== -->
+    <!-- == HEADER / LANDING SECTION (Initial Fullscreen, then Shrunk Fixed) == -->
+    <!-- ====================================================================== -->
+    <header id="main-header" class="landing-fullscreen"> 
+        <!-- Hamburger Menu Button - Remains fixed -->
+        <button id="hamburger-menu-button" class="menu-button" aria-label="Open Menu">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <!-- Single Site Title Container - Its content and style change with header state -->
+        <div class="site-title-container">
+            <a href="index.html"><h1>Para Kay..</h1></a>
+            <p class="subtitle">AJ Arre || Tulaarawan</p>
+        </div>
+        
+        <!-- Category Navigation & Search - Its visibility and layout change with header state -->
+        <nav id="category-nav" class="categories-navigation"> <!-- Removed hidden-on-landing for now, CSS will control -->
+            <ul class="nav-links-list">
+                <li id="most-recent"><a href="#recent-section">Most Recent</a></li>
+                <li><a href="#favorites-section">Favorites</a></li>
+                <li><a href="#monthly-archive-section">Monthly Archives</a></li> 
+                <li><a href="#all-poems-link-section">All Poems</a></li> 
+            </ul>
+            <div class="search-area">
+                <button id="search-icon-button" class="search-button" aria-label="Open Search">
+                    <i class="fas fa-search"></i>
+                </button>
+                <div id="search-bar-container" class="search-bar-container">
+                    <input type="text" id="search-input" placeholder="Search poems...">
+                    <button id="search-submit-button" aria-label="Submit search">Go</button>
+                </div>
+            </div>
+        </nav>
+        <!-- 
+            OFF-CANVAS MENU 
+            - Slides in from the right.
+            - Visibility controlled by JS (toggling the 'open' class).
+        -->
+        <div id="offcanvas-menu" class="offcanvas-menu-container"> <!-- 'open' class toggled by JS -->
+            <button id="close-offcanvas-menu-button" class="close-menu-button" aria-label="Close Menu">×</button>
+            <ul>
+                <li><a href="https://www.facebook.com/andreijefferson.arre" target="_blank">Facebook</a></li>
+                <li><a href="https://www.instagram.com/the_kalinaw/" target="_blank">Instagram</a></li>
+                <li><a href="mailto:andreijeffersonarre@gmail.com" target="_blank">Email</a></li>
+                <li><a href="YOUR_LINKEDIN_LINK_HERE" target="_blank">LinkedIn</a></li>
+                <li><a href="https://docs.google.com/document/d/1GE34GQqCklCJTGagv005QVi6jZuWk7W5MT-nReKd1EE/edit?usp=sharing" target="_blank">Portfolio</a></li>
+                <!-- Add more external links as needed -->
+                <li class="theme-toggle-menu-item">
+                    <button id="theme-toggle-button" class="theme-button-in-menu" aria-label="Toggle theme">
+                        <span class="theme-button-text">Toggle Theme</span> 
+                        <i class="fas fa-moon"></i> <!-- Icon changes with JS based on theme -->
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- ====================================================================== -->
+    <!-- ==================== MAIN PAGE CONTENT SECTIONS ==================== -->
+    <!-- ====================================================================== -->
+    <main id="page-content">
+
+        <!-- == MOST RECENT POEMS SECTION == -->
+        <section id="recent-section" class="poem-category-section">
+            <h2 class="section-title">Most Recent</h2>
+            <div class="gallery-grid" id="recent-gallery-container">
+                <!-- "Most Recent" poem items (up to 6) will be populated here by JavaScript -->
+            </div>
+        </section>
+        
+        <!-- == PERSONAL FAVORITES SECTION == -->
+        <section id="favorites-section" class="poem-category-section">
+            <h2 class="section-title">Personal Favorites</h2>
+            <div class="gallery-grid" id="favorites-gallery-container">
+                <!-- "Favorites" poem items (up to 6) will be populated here by JavaScript -->
+            </div>
+            <div class="view-all-container text-center-section" style="margin-top: 30px;"> <!-- Wrapper for the button -->
+                <button id="view-all-favorites-button" class="button-style-link" style="display:none;">
+                    View All Favorites <i class="fas fa-chevron-down"></i>
+                </button>
+            </div>
+        </section>
+
+        <!-- == MONTHLY ARCHIVES SECTION == -->
+        <section id="monthly-archive-section" class="poem-category-section">
+            <h2 class="section-title">Monthly Archives</h2>
+            <div class="monthly-archive-controls">
+                <label for="year-select">Year:</label>
+                <select id="year-select" aria-label="Select year for archive"><option value="">Select Year</option></select> 
+                <label for="month-select">Month:</label>
+                <select id="month-select" aria-label="Select month for archive" disabled><option value="">Select Month</option></select> 
+                <button id="view-month-button">View Poems</button>
+            </div>
+            <div class="gallery-grid" id="monthly-gallery-container">
+                <p class="gallery-placeholder-message">Buksan ang aklat sa taon at buwan ng..</p> 
+            </div>
+        </section>
+        
+        <!-- == LINK TO ALL POEMS PAGE SECTION == -->
+        <section id="all-poems-link-section" class="poem-category-section text-center-section"> 
+            <h2 class="section-title">Explore All</h2>
+            <a href="all-poems.html#all-poems-content" class="button-style-link" id="view-all-poems-button">
+                View All Poems <i class="fas fa-arrow-right"></i>
+            </a>
+        </section>
+
+    </main>
+
+    <!-- ====================================================================== -->
+    <!-- ==================== MODAL FOR INDIVIDUAL POEM ===================== -->
+    <!-- ====================================================================== -->
+    <div id="story-modal" class="modal"> <!-- 'active' class toggled by JS -->
+        <div class="modal-content-wrapper"> 
+            <div class="modal-content">
+                <span class="close-button" title="Close (Esc)" aria-label="Close modal">×</span>
+                <div class="modal-media-container">
+                    <!-- Media (image or video) dynamically loaded by JS -->
+                </div>
+                <div class="modal-details-content">
+                    <h3 id="modal-poem-title" class="poem-title-in-modal">
+                        <!-- Poem Title/Short Poem Text loaded by JS -->
+                    </h3>
+                    <div id="modal-song-info">
+                        <p><strong id="modal-song-title-artist">
+                            <!-- Song Title & Artist loaded by JS -->
+                        </strong></p>
+                        <div id="modal-song-links">
+                            <!-- Streaming Links loaded by JS -->
+                        </div>
+                    </div>
+                    <p class="modal-date">Posted: <span id="modal-date-posted">
+                        <!-- Date loaded by JS -->
+                    </span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ====================================================================== -->
+    <!-- ========================== PAGE FOOTER =========================== -->
+    <!-- ====================================================================== -->
+    <footer>
+        <p>©<span id="current-year"></span>. AJ Arre. sa mundong puno ng galit at katapusan, mabuhay ka at magmahal.</p>
+    </footer>
+
+    <!-- JavaScript file will be linked here eventually -->
+    <script type="module" src="js/main-index.js"></script> 
+</body>
+</html>
