@@ -3,6 +3,34 @@
 
 export const storiesData = [
     {
+        "id": 111,
+        "media_path": "media/2025-09/Panatang Makata.mp4",
+        "media_type": "video",
+        "poem_title": "Panatang Makata",
+        "poem_text": "ako ay tutula, mahabang-mahaba\nako ay nakaupo, ito pa lang ang simula\n\nsa lahat ng nagdaang siglo,\nkailan natin balak baliin ang siklo?\nhindi niyo kami mapapatahimik,\nkatarungan ay naghihimagsik.\n\nat sa pagtayo ng bawat Pilipino,\nnakangiti ang dakilang paralitiko,\ndahil hindi lamang paa ang gamit\npara lumaban at tumindig.\n\npanahon na upang gumalaw,\nsama-sama tayong sumigaw\nat mangakong hindi na mauulit,\nkasalanan ang muling pagpikit.\n\nisang panata ng isang makata:\nhangga't buhay, aking pipiliin\nna tumayo at kayo ang kapiling.\nO bayang magiliw,\nkarangalan ng aking puso\nang mabuhay ng dahil sa'yo.\n\n-AJ || nanonood ang kasaysayan",
+        "song_title": "Ipanumpa Ko",
+        "song_artist": "Oh! Caraga",
+        "song_link_spotify": "https://open.spotify.com/track/3JQJW9oVjTZcrpV0PPxaYm?si=7dd9a6e6098845cd",
+        "song_link_youtube": "https://www.youtube.com/results?search_query=Ipanumpa+Ko+Oh%21+Caraga",
+        "date_posted": "2025-09-21",
+        "is_favorite": true,
+        "favorite_rank": "5"
+    },
+    {
+        "id": 110,
+        "media_path": "media/2025-08/mirasol.mp4",
+        "media_type": "video",
+        "poem_title": "Mirasol",
+        "poem_text": "at sa pagtingin sa salamin\nliwanag ay wala sa mga bituin\nsapagkat ikaw ang kalawakan\nnabubuhay, nagmamahal hanggang katapusan\n\n-AJ || nasira ang bubong sa walang hangganang pananampalataya",
+        "song_title": "You Are My Sunshine (Lullaby)",
+        "song_artist": "Music Box Lullabies",
+        "song_link_spotify": "https://open.spotify.com/track/2jyVBqhUleOfzzoPSGjj3b?si=7293e2e63ddf4fe6",
+        "song_link_youtube": "https://www.youtube.com/results?search_query=You+Are+My+Sunshine+%28Lullaby%29+Music+Box+Lullabies",
+        "date_posted": "2025-08-04",
+        "is_favorite": true,
+        "favorite_rank": "4"
+    },
+    {
         "id": 109,
         "media_path": "media/2025-05/2025-05-24_020507_untitled.mp4",
         "media_type": "video",
@@ -54,7 +82,7 @@ export const storiesData = [
         "song_link_youtube": "https://www.youtube.com/results?search_query=Invisible+Zara+Larsson+lyrics",
         "date_posted": "2024-12-25",
         "is_favorite": true,
-        "favorite_rank": "7"
+        "favorite_rank": "9"
     },
     {
         "id": 105,
@@ -94,7 +122,7 @@ export const storiesData = [
         "song_link_youtube": "https://www.youtube.com/results?search_query=Palagi+TJ+Monterde+lyrics",
         "date_posted": "2024-12-13",
         "is_favorite": true,
-        "favorite_rank": "8"
+        "favorite_rank": "7"
     },
     {
         "id": 102,
@@ -371,7 +399,6 @@ export const storiesData = [
         "song_link_youtube": "https://www.youtube.com/results?search_query=Liwanag+Sa+Dilim+Rivermaya+lyrics",
         "date_posted": "2024-07-04",
         "is_favorite": true,
-        "favorite_rank": "6"
     },
     {
         "id": 81,
@@ -463,7 +490,6 @@ export const storiesData = [
         "song_link_youtube": "https://www.youtube.com/results?search_query=Numb+Little+Bug+Em+Beihold+lyrics",
         "date_posted": "2024-05-04",
         "is_favorite": true,
-        "favorite_rank": "4"
     },
     {
         "id": 74,
